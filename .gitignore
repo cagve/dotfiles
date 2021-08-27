@@ -1,0 +1,3 @@
+# Ignoramos	los archivos de los plugins
+nvim/.config/nvim/plugged/**
+nvim/.config/nvim/undodir/**

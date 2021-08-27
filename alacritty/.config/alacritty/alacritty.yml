@@ -1,0 +1,18 @@
+font:
+  bold:
+    family: Source Code Pro
+    style: Bold
+  italic:
+    family: Source Code Pro
+    style: Italic
+  normal:
+    family: Source Code Pro
+    style: Regular
+  size: 10
+key_binding:
+  - action: ScrollPageUp
+    key: PageUp
+    mods: Shift
+  - action: ScrollPageDown
+    key: PageDown
+    mods: Shift

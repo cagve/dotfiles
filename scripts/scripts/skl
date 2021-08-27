@@ -1,0 +1,29 @@
+#!/bin/bash
+
+gethelp(){
+cat <<EOF
+-s,	Recompilar st  (/usr/src/st)
+-d,	Recompilar dwm (/usr/src/dwm)
+EOF
+}
+
+case $1 in
+	"-s")
+		echo "Recompilando st"
+		sudo rm /usr/src/st/config.h
+		cd /usr/src/dwm
+		make
+		sudo make clean install
+		;;
+	"-d")
+		echo "Recompilando dwm"
+		cd /usr/src/dwm
+		rm config.h
+		make
+		sudo make clean install
+		;;
+	*)
+		echo "Orden no encontrada"
+		gethelp 
+		;;
+esac

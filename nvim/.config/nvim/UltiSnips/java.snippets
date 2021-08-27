@@ -1,0 +1,82 @@
+priority 99 
+global !p
+def junit(snip):
+	if snip.opt("g:ultisnips_java_junit", "") == "3":
+		snip += ""
+	else:
+		snip.rv += "@Test\n\t"
+def nl(snip):
+	if snip.opt("g:ultisnips_java_brace_style", "") == "nl":
+		snip += ""
+	else:
+		snip.rv += " "
+def getArgs(group):
+	import re
+	word = re.compile('[a-zA-Z0-9><.]+ \w+')
+	return [i.split(" ") for i in word.findall(group) ]
+def camel(word):
+	if not word: return ''
+	return word[0].upper() + word[1:]
+def mixedCase(word):
+	if not word: return ''
+	return word[0].lower() + word[1:]
+endglobal
+
+snippet main "method (main)" b
+public static void main(String[] args)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet print "System out print" b
+System.out.print("$1"); $0
+endsnippet
+
+snippet println "System out print" b
+System.out.println("$1"); $0
+endsnippet
+
+snippet if "if" b
+if ($1)`!p nl(snip)`{
+	$0${VISUAL}
+}
+endsnippet
+
+snippet class "class" b
+public class ${1:`!p
+snip.rv = snip.basename or "untitled"`} {
+	$0
+}
+endsnippet
+
+snippet method "method" b
+${1:private} ${2:void} ${3:method}($4) {
+	$0
+}
+endsnippet
+
+
+snippet /get(ter)?/ "getter" br
+public ${1:String} get${2:Name}() {
+	return `!p snip.rv = mixedCase(t[2])`;
+}
+endsnippet
+
+snippet /set(ter)?/ "setter" br
+public void set${1:Name}(${2:String} `!p snip.rv = mixedCase(t[1])`) {
+	this.`!p snip.rv = mixedCase(t[1])` = `!p snip.rv = mixedCase(t[1])`;
+}
+endsnippet
+
+
+snippet switch "switch" b
+switch ($1)`!p nl(snip)`{
+	case $2: $0
+}
+endsnippet
+
+snippet wh "while" b
+while ($1)`!p nl(snip)`{
+	$0
+}
+endsnippet
