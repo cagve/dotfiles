@@ -31,6 +31,5 @@ require('telescope').setup{
 			color_devicons = true,
 		}
 	}
-
 return M
 

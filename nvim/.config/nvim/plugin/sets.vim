@@ -15,9 +15,11 @@ set termguicolors
 set incsearch
 set scrolloff=8
 set colorcolumn=+1
-set background=dark
 set formatoptions-=ro
 set hidden "Deja en el buffer el archivo que estas editando
 " set rtp+=/repositorio/Drive/Documents/ESSLI/Temporal/
 
-colorscheme OceanicNext
+set termguicolors
+set background=dark
+"colorscheme OceanicNext
+colorscheme gruvbox
